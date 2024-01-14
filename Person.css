@@ -1,18 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Homemade+Apple&family=Italianno&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Tangerine:wght@400;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Cinzel+Decorative:wght@400;700;900&family=Homemade+Apple&family=Italianno&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kaushan+Script&family=Oranienbaum&family=Rubik+Doodle+Shadow&family=Satisfy&family=Tangerine:wght@400;700&display=swap');
 body {
     font-family: Arial, sans-serif;
-   background:linear-gradient(to left, blue,lightblue);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.895);
+    color: white;
     margin: 0;
     display: flex;
-    align-items: center;
+    /* align-items: center;
     justify-content: center;
     font-family: "Satisfy", cursive;
-    height: 100vh;
+    height: 100vh; */
     
 }
+nav {
+    width: 100%;
+    height: 80px;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+
+}
+
+#logo{
+    font-size: 2rem;
+}
+.logo {
+    width: 25%;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 3rem;
+
+}
+.logo i{
+    font-size: 19px;
+    padding-right: 6%;
+    color: white;
+}
+
+.new {
+    width: 40%;
+    font-size: 1.3rem;
+    padding-right: 6%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    width: 30%;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+
+   
+}
+
+a:hover{
+    color: aqua;
+}
+
 
 #login-container {
     width: 60%;
@@ -29,42 +80,63 @@ body {
     border-radius: 15px;
     border-color:#d2d2d2;
     border-width: 5px;
-    box-shadow:-15px -15px 10px #ccddff;
-    animation: zooninout 2s infinite alternate ;
+    box-shadow: 0px 0px 12px aqua;
+    animation: zooninout 4s infinite alternate ;
    
 }
 
 @keyframes zooninout  {
     0%{
-    box-shadow: 0px 0px 10px rgba(27, 26, 26, 0.559);
+    box-shadow: 0px 0px 10px aqua;
     }
     50%{
-       box-shadow: 0px 0px 10px rgb(231, 231, 243),
-       0px 0px 20px rgb(187, 187, 224),
-       0px 0px 30px rgb(185, 185, 235)
+       box-shadow: 0px 0px 5px aqua,
+       0px 0px 17px rgb(52, 241, 241),
+       0px 0px 20px rgb(98, 255, 255);
     }
 }
-
-h1{
+#span {
     padding-top: -9%;
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
     color: white;
+    font-family: "Cinzel Decorative";
+}
+h2{
+    padding-top: -9%;
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+    font-family: "Cinzel Decorative";
 
 }
 
-input {
+input[type="number"] {
     width: 100%;
     padding: 15px;
     margin: 8px 0;
     box-sizing: border-box;
     border-radius: 8px;
+    font-size: 16px;
+}
+input::placeholder{
+    font-weight: bold;
+
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 button {
     width: 100%;
-    background-color: #4caf50;
-    color: white;
+    background-color: rgb(45, 247, 247);
+    color: rgb(0, 0, 0);
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -73,7 +145,7 @@ button {
     font-size: 20px;
     cursor: pointer;
     margin-top: 4%;
-    transform: background 1s ;
+    
 }
 
 label{
@@ -88,4 +160,25 @@ button{
     justify-content: center;
     margin-left: 10%;
     gap: 2%;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+
+}
+
+span{
+    padding-right: 10%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1%;
+    font-size: 20px;
+}
+
+#check{
+    display: flex;
+    font-size: 12px;
 }
