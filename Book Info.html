@@ -26,9 +26,13 @@
                 <i class="fa-solid fa-rotate-right" id="relode"></i>
             </div>
         </nav>
+
+        <div id="Message"></div>
+        
          <div class="container my-5" >
             <h1>World Library <span style="color: aqua;"> Create Book</span></h1>
-            <hr>
+       
+        <hr>
             <form id="libraryForm">
               <div class="row mb-3">
                 <label for="BookName" class="col-sm-2 col-form-label"><b>Book</b></label>
@@ -55,7 +59,7 @@
                 </div>
               </div>
               <fieldset class="row mb-3">
-                <legend class="col-form-label col-sm-2 pt-0"><b>Type</b></legend>
+                <legend class="col-form-label col-sm-2 pt-0"><b>type</b></legend>
                 <div class="col-sm-10">
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="Type" id="Programing" value="Programing" checked="">
@@ -84,30 +88,34 @@
 
             <div class="table  mt-5">
               <h1 class="" style="text-align: center;">Your Books</h1>
-              <hr class="">
+              <hr >
             
-            <table class="table">
+            <table class="table" id="html">
               <thead>
                <tr>
-                  <th scope="col">#</th>
                   <th scope="col">Book Name</th>
                   <th scope="col">Author</th>
                   <th scope="col">Price</th>
                   <th scope="col">ISBN</th>
+                  <th scope="col">type</th>
                 </tr>
               </thead>  
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Book</td>
-                  <td>Author</td>
-                  <td>120</td>
+              <tbody id="tableBody">
+                <tr>  
+                  <td>Web Develoment</td>
+                  <td>Ak.Jain</td>
+                  <td>Rs. 1,300</td>
                   <td>JUTH564b</td>
+                  <td>Programing</td>
                 </tr>
               </tbody>        
             </table>     
         </div>
       </div>
+    </header>
+
+
+
     </header>
 
 <script src="./Book Info.js"></script>

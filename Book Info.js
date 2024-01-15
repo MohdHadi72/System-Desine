@@ -1,42 +1,86 @@
-// let Relode = document.getElementById("relode")
-// Relode.addEventListener("click",()=>{
-//     window.location.reload();
-// });
+let Relode = document.getElementById("relode")
+Relode.addEventListener("click",()=>{
+    window.location.reload();
+});
 
-function book(book, author , price , isbn ,type){
+function Book(book,Author,Price,Isbn,type){
     this.book = book;
-    this.author = author;
-    this.price = price;
-    this.isbn = isbn;
+    this.Author = Author;
+    this.Price = Price;
+    this.Isbn = Isbn;
     this.type = type;
 }
 
-function Display(){
+
+function display(){
 
 }
 
+display.prototype.add = function(book){
+    TbleBody = document.getElementById("tableBody");
+    let AddTable = `
+            <tr>  
+               <td>${book.book}</td>
+               <td>${book.Author}</td>
+               <td>${book.Price}</td>
+               <td>${book.Isbn}</td>
+               <td>${book.type}</td>
+             </tr>
+    
+    `;
+    TbleBody.innerHTML += AddTable;
+
+}
+
+display.prototype.clear = function(){
+    let libraryFormVal = document.getElementById("libraryForm");
+    libraryFormVal.reset();
+}
+
+display.prototype.validata = function(book){
+   if(book.book.length<2 || book.Author.length<2 || book.Isbn.length<2){
+    return false;
+   }
+   else{
+    return true;
+   }
+}
+display.prototype.show = function(type,displayMessage){
+   let printmesg =  document.getElementById("Message");
+   printmesg.innerHTML = `
+   <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+  <strong>Message:</strong> ${displayMessage}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&tiems;</span>
+  </button>
+   </div>
+   `;
+   
+}
+
+
+
 let libraryFormVal = document.getElementById("libraryForm");
-libraryFormVal.addEventListener("submit", formSubmit);
+libraryFormVal.addEventListener("submit",info);
 
-function formSubmit(e){
+function info(e){
 
-    console.log("hellos");
-
- let BookVal   = document.getElementById("BookName").value;
- let AuthorVal = document.getElementById("AuthorName").value; 
- let PriceVal  = document.getElementById("PriceVal").value;
- let IsbnVal   = document.getElementById("ISBNCode").value;
-  let type;
+ const BookVal   = document.getElementById("BookName").value;
+ const AuthorVal = document.getElementById("AuthorName").value; 
+ const PriceVal  = document.getElementById("PriceVal").value;
+ const IsbnVal   = document.getElementById("ISBNCode").value;
+ let type;
 
  let  ProgramingText = document.getElementById("Programing");
  let  english        = document.getElementById("English");
  let  scince         = document.getElementById("Science");
 
+ 
 
 if(ProgramingText.checked){
     type = ProgramingText.value;
-
 }
+
 
 else if(english.checked){
     type = english.value;
@@ -46,9 +90,21 @@ else if(scince.checked){
     type = scince.value;
 }
 
-let bookprint = new book(book,author,price,isbn,type);
-console.log(bookprint);
- e.preventDefault();
 
+ const BookNameVal = new Book(BookVal,AuthorVal,PriceVal,IsbnVal,type);
+console.log(BookNameVal)
 
+let displayValcheck = new display();
+
+if(displayValcheck.validata(BookNameVal)){
+
+  displayValcheck.add(BookNameVal);
+  displayValcheck.clear();
+  displayValcheck.show('Success' , "Your Book Has Been SuccessFully Add");
+
+}else{
+  displayValcheck.show("Danger","Sorry You Can not Add This Book");
+  
+ }
+e.preventDefault();
 }
