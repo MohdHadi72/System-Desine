@@ -3,6 +3,8 @@ Relode.addEventListener("click",()=>{
     window.location.reload();
 });
 
+
+
 function Book(book,Author,Price,Isbn,type){
     this.book = book;
     this.Author = Author;
@@ -16,21 +18,24 @@ function display(){
 
 }
 
+
 display.prototype.add = function(book){
     TbleBody = document.getElementById("tableBody");
     let AddTable = `
-            <tr>  
+        <tr>  
                <td>${book.book}</td>
                <td>${book.Author}</td>
                <td>${book.Price}</td>
                <td>${book.Isbn}</td>
                <td>${book.type}</td>
-             </tr>
+        </tr>
+       
     
     `;
     TbleBody.innerHTML += AddTable;
-
+  
 }
+
 
 display.prototype.clear = function(){
     let libraryFormVal = document.getElementById("libraryForm");
@@ -54,15 +59,20 @@ display.prototype.show = function(type,displayMessage){
   <span aria-hidden="true">&tiems;</span>
   </button>
    </div>
-   `;
+
+`;
+   setInterval(function() {
+    printmesg.innerHTML = ""
+   }, 2000);
    
+//    saveDataIn();
 }
 
 
 
 let libraryFormVal = document.getElementById("libraryForm");
 libraryFormVal.addEventListener("submit",info);
-
+let newBooks = []
 function info(e){
 
  const BookVal   = document.getElementById("BookName").value;
@@ -71,11 +81,11 @@ function info(e){
  const IsbnVal   = document.getElementById("ISBNCode").value;
  let type;
 
+
  let  ProgramingText = document.getElementById("Programing");
  let  english        = document.getElementById("English");
  let  scince         = document.getElementById("Science");
 
- 
 
 if(ProgramingText.checked){
     type = ProgramingText.value;
@@ -91,20 +101,41 @@ else if(scince.checked){
 }
 
 
+
  const BookNameVal = new Book(BookVal,AuthorVal,PriceVal,IsbnVal,type);
-console.log(BookNameVal)
+
+
+newBooks.push(BookNameVal);
+
 
 let displayValcheck = new display();
 
 if(displayValcheck.validata(BookNameVal)){
-
   displayValcheck.add(BookNameVal);
   displayValcheck.clear();
   displayValcheck.show('Success' , "Your Book Has Been SuccessFully Add");
+  
 
 }else{
   displayValcheck.show("Danger","Sorry You Can not Add This Book");
   
  }
 e.preventDefault();
+
 }
+
+
+function validateText(input){
+    let inputValue = input.value;
+    let cleanValue = inputValue.replace(/[^A-Za -z]/g, '');
+    input.value = cleanValue;
+};
+
+function getLibraryFromLocalStorage(){
+        let library = localStorage.getItem('library');
+        return library ? JSON.parse(library) : [];
+    }
+
+    function saveLibraryToLocalStorage(library){
+        localStorage.setItem('library', JSON.stringify(library));
+    }

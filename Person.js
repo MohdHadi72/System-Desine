@@ -4,10 +4,19 @@ function attemptLogin() {
     const MobileVal = document.getElementById('Mobile').value;
     const text = document.getElementById('text');
     const Text = document.getElementById('Text');
+    const textcheck = document.getElementById('check');
 
     if (usernameVal === "Hadi Zaidi" && MobileVal === "8534007321"){
-         window.location.href = "http://127.0.0.1:5501/System-Desine/Book.html";
-
+      if(textcheck.checked){
+        window.location.href = "http://127.0.0.1:5501/System-Desine/Book.html";   
+       }else{
+           textColor.style.color = "red";
+           textColor.innerHTML = "Your Are Agree For This Form";
+          setTimeout(function() {
+           textColor.innerHTML = "I'm Agree For This Form";
+           textColor.style.color = "white";
+        },2000);   
+       }
     } else if(usernameVal !== "Hadi Zaidi"){
         document.getElementById("username").style.borderColor = "red";
         text.innerHTML = "Incorrect Username";
@@ -31,3 +40,9 @@ Relode.addEventListener("click",()=>{
 })
 
 
+
+function validateText(input){
+  let inputValue = input.value;
+  let cleanValue = inputValue.replace(/[^A-Za -z]/g, '');
+  input.value = cleanValue;
+};

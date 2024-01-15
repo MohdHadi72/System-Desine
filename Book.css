@@ -73,8 +73,7 @@ a:hover{
 
 
 #login-container {
-    width: 60%;
-    
+    width: 60%; 
     background-color: rgba(0, 0, 0, 0.801);
 	position: absolute;
 	top:50%;

@@ -37,25 +37,25 @@
               <div class="row mb-3">
                 <label for="BookName" class="col-sm-2 col-form-label"><b>Book</b></label>
                 <div class="col-sm-10">
-                  <input type="BookName" class="BookName" id="BookName">
+                  <input type="text" class="BookName" id="BookName" oninput="validateText(this)">
                 </div>
                </div>
               <div class="row mb-3">
                 <label for="AuthorName" class="col-sm-2 col-form-label"><b>Author</b></label>
                 <div class="col-sm-10">
-                  <input type="AuthorName" class="AuthorName" id="AuthorName">
+                  <input type="text" class="AuthorName" id="AuthorName" oninput="validateText(this)">
                 </div>
               </div>
               <div class="row mb-3">
                 <label for="PriceVal" class="col-sm-2 col-form-label"><b>Price</b></label>
                 <div class="col-sm-10">
-                  <input type="PriceVal" class="PriceVal" id="PriceVal">
+                  <input type="number" class="PriceVal" id="PriceVal">
                 </div>
               </div>
               <div class="row mb-3">
                 <label for="ISBNCode" class="col-sm-2 col-form-label"><b>Isbn</b></label>
                 <div class="col-sm-10">
-                  <input type="ISBNCode" class="ISBNCode" id="ISBNCode">
+                  <input type="text" class="ISBNCode" id="ISBNCode" oninput="validateText(this)">
                 </div>
               </div>
               <fieldset class="row mb-3">
@@ -83,7 +83,7 @@
               </fieldset>
               
               
-              <button type="submit" class="btn btn-primary">Add Button</button>
+              <button type="submit" class="btn btn-primary" onclick="findBook()">Add Button</button>
             </form>
 
             <div class="table  mt-5">
