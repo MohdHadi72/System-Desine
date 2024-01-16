@@ -5,24 +5,45 @@ function attemptLogin() {
     const text = document.getElementById('text');
     const Text = document.getElementById('Text');
     const TextCheck = document.getElementById('check');
-    const textColor = document.getElementById('Textcolor');
+    // const textColor = document.getElementById('Textcolor');
+    // const textSet = document.getElementById('textItemSet');
+
+    let new1 = "ChekcBox"
+    let message = "Are You Agree For This Form "
+
 
     if (username === "Hadi Zaidi" && password === "Hadi@123"){
         if(TextCheck.checked){
             window.location.href = "http://127.0.0.1:5501/System-Desine/Delete%20Book.html";   
            }else{
-            textColor.style.color = "red";
-            textColor.innerHTML = "Your Are Agree For This Form";
-              setTimeout(function() {
-                textColor.innerHTML = "I'm Agree For This Form";
-                textColor.style.color = "white";
-            },2000);   
-           }
-    } else if(username !== "Hadi Zaidi"){
+            let textitem = document.getElementById("textItemSet");
+            textitem.innerHTML = `
+            <div class="alert alert-${new1} alert-dismissible fade show" role="alert">
+            <strong>Message: </strong>${message}
+            <span type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></span>
+          </div>
+          `;
+            textitem.style.color = "yellow";
+            textitem.style.backgroundColor = "rgba(255, 123, 0, 0.571)";
+            textitem.style.fontWeight = "bold";
+             
+            setTimeout(function(){
+              textitem.innerHTML = "";
+              textitem.style.backgroundColor = "";
+
+         },3000);
+       }
+    }else if(username !== "Hadi Zaidi"){
         document.getElementById("username").style.borderColor = "red";
         text.innerHTML = "incorrect Username";
         text.style.color = "red";
-        // text.style.fontSize = "12px";
+        setTimeout(function(){
+            document.getElementById("username").style.borderColor = "";
+            text.innerHTML = "";
+            text.style.color = "";
+
+       },4000);
+       
          
         
     }
@@ -30,7 +51,13 @@ function attemptLogin() {
       document.getElementById("password").style.borderColor = "red";
       Text.innerHTML = "incorrect Password";
       Text.style.color = "red";
-    //   Text.style.fontSize = "12px";
+      setTimeout(function(){
+        document.getElementById("username").style.borderColor = "";
+        Text.innerHTML = "";
+        Text.style.color = "";
+
+   },4000);
+   
     }
     
 }

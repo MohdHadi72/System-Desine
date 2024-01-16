@@ -5,9 +5,8 @@ function attemptLogin() {
     const text = document.getElementById('text');
     const Text = document.getElementById('Text');
     const Textcheck = document.getElementById('check');
-    // const textItmeSet = document.getElementById('textItemSet');
     let new1 = "ChekcBox"
-    let message = "Are You Agree For This Form If Yo Are Agree So Select Check Box"
+    let message = "Are You Agree For This Form "
 
     if (username === "Hadi Zaidi" && password === "Hadi@123"){
         if(Textcheck.checked){
@@ -34,6 +33,12 @@ function attemptLogin() {
         text.innerHTML = "incorrect Username";
         text.style.color = "red";
         text.style.fontSize = "12px";
+        setInterval(() => {
+            document.getElementById("username").style.borderColor = "";
+            text.innerHTML = "";
+           text.style.color = "";
+           text.style.fontSize = "";
+          },5000);
          
         
     }
@@ -42,6 +47,12 @@ function attemptLogin() {
       Text.innerHTML = "incorrect Password";
       Text.style.color = "red";
       Text.style.fontSize = "12px";
+      setInterval(() => {
+        document.getElementById("password").style.borderColor = "";
+        Text.innerHTML = "";
+       Text.style.color = "";
+       Text.style.fontSize = "";
+      },5000);
     }
     
     

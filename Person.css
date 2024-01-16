@@ -161,13 +161,13 @@ label{
     font-weight: bold;
 }
 
-button{
+/* button{
     width: 30%;
     align-items: center;
     justify-content: center;
     margin-left: 10%;
     gap: 2%;
-}
+} */
 .text{
     display: flex;
     justify-content: center;

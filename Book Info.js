@@ -1,5 +1,3 @@
-
-
 function Book(book, Author, Price, Isbn, type) {
   this.book = book;
   this.Author = Author;
@@ -11,18 +9,20 @@ function Book(book, Author, Price, Isbn, type) {
 function Display() {}
 
 Display.prototype.add = function (book) {
-  let TbleBody = document.getElementById("tableBody");
-  let AddTable = `
-        <tr>  
-               <td>${book.book}</td>
-               <td>${book.Author}</td>
-               <td>${book.Price}</td>
-               <td>${book.Isbn}</td>
-               <td>${book.type}</td>
-        </tr>
-    `;
+  let tableBody = document.getElementById("tableBody");
+  let tableRow = `
+    <tr>  
+        <td>${book.book}</td>
+        <td>${book.Author}</td>
+        <td>${book.Price}</td>
+        <td>${book.Isbn}</td>
+        <td>${book.type}</td>
+        <td><button class="btn btn-danger" id="remove" onclick="deleteBook('${book.Isbn}')">Delete</button>
+        </td>
+    </tr>
+  `;
 
-  TbleBody.innerHTML += AddTable;
+  tableBody.innerHTML += tableRow;
 };
 
 Display.prototype.clear = function () {
@@ -30,32 +30,33 @@ Display.prototype.clear = function () {
   libraryFormVal.reset();
 };
 
-Display.prototype.validata = function (book) {
+Display.prototype.validate = function (book) {
   return book.book.length >= 2 && book.Author.length >= 2 && book.Isbn.length >= 2;
 };
 
 Display.prototype.show = function (type, displayMessage) {
-  let printmesg = document.getElementById("Message");
-  printmesg.innerHTML = `
-   <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-  <strong>Message:</strong> ${displayMessage}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-  </button>
-   </div>
-`;
-printmesg.style.backgroundColor = "red"
+  let printMessage = document.getElementById("Message");
+  printMessage.innerHTML = `
+    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> ${displayMessage}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  `;
 
-  setInterval(function () {
-    printmesg.innerHTML = "";
+  printMessage.style.backgroundColor = "red";
+
+  setTimeout(function () {
+    printMessage.innerHTML = "";
   }, 2000);
 };
 
 let libraryFormVal = document.getElementById("libraryForm");
-libraryFormVal.addEventListener("submit", info);
-let newBooks = [];
+libraryFormVal.addEventListener("submit", function (e) {
+  e.preventDefault();
+  info();
+});
 
-function info(e) {
+function info() {
   const BookVal = document.getElementById("BookName").value;
   const AuthorVal = document.getElementById("AuthorName").value;
   const PriceVal = document.getElementById("PriceVal").value;
@@ -64,47 +65,60 @@ function info(e) {
 
   let ProgramingText = document.getElementById("Programing");
   let english = document.getElementById("English");
-  let scince = document.getElementById("Science");
+  let science = document.getElementById("Science");
 
   if (ProgramingText.checked) {
     type = ProgramingText.value;
-  } 
-  else if (english.checked) {
+  } else if (english.checked) {
     type = english.value;
-  }
-   else if (scince.checked) {
-    type = scince.value;
+  } else if (science.checked) {
+    type = science.value;
   }
 
   const BookNameVal = new Book(BookVal, AuthorVal, PriceVal, IsbnVal, type);
-  newBooks.push(BookNameVal);
 
   let displayValcheck = new Display();
 
-  if (displayValcheck.validata(BookNameVal)) {
+  if (displayValcheck.validate(BookNameVal)) {
     displayValcheck.add(BookNameVal);
     displayValcheck.clear();
-    displayValcheck.show("Success", "Your Book Has Been Successfully Added");
+    displayValcheck.show("success", "Your Book Has Been Successfully Added");
 
-    saveStorage(newBooks);
+   
+    booksArray.push(BookNameVal);
+    saveStorage(booksArray);
   } else {
-    displayValcheck.show("Danger", "Sorry, You Cannot Add This Book");
+    displayValcheck.show("danger", "Sorry, You Cannot Add This Book");
   }
-
-  e.preventDefault();
 }
 
 function validateText(input) {
   let inputValue = input.value;
-  let cleanValue = inputValue.replace(/[^A-Za -z]/g, "");
+  let cleanValue = inputValue.replace(/[^A-Za-z ]/g, "");
   input.value = cleanValue;
 }
 
-let Relode = document.getElementById("relode");
-Relode.addEventListener("click", () => {
+function deleteBook(isbn) {
+  booksArray = booksArray.filter((book) => book.Isbn !== isbn);
+  saveStorage(booksArray);
+  displayBooks();
+}
+
+function displayBooks() {
+  let displayValcheck = new Display();
+  let tableBody = document.getElementById("tableBody");
+  tableBody.innerHTML = "";
+
+
+  booksArray.forEach(function (book) {
+    displayValcheck.add(book);
+  });
+}
+
+let Reload = document.getElementById("reload");
+Reload.addEventListener("click", function () {
   window.location.reload();
 });
-
 
 function LocalStorage() {
   let library = localStorage.getItem("library");
@@ -116,10 +130,6 @@ function saveStorage(library) {
 }
 
 window.addEventListener("load", function () {
-  newBooks = LocalStorage();
-  let displayValcheck = new Display();
-  newBooks.forEach(function (book) {
-    displayValcheck.add(book);
-
-  });
+  booksArray = LocalStorage();
+  displayBooks();
 });

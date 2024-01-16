@@ -90,3 +90,11 @@ a:hover{
 table{
     background-color: transparent;
    }
+
+   #remove{
+    width: 50%;
+    background-color: aqua;
+    color: black;
+    border: none;
+    font-weight: bold;
+ }
