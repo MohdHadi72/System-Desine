@@ -4,8 +4,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: rgba(0, 0, 0, 0.895);
     color: white;
-    margin: 0;
-    display: flex;
+    /* margin: 0;
+    display: flex; */
     /* align-items: center;
     justify-content: center;
     font-family: "Satisfy", cursive;
@@ -76,7 +76,7 @@ a:hover{
     width: 60%; 
     background-color: rgba(0, 0, 0, 0.801);
 	position: absolute;
-	top:50%;
+	top:57%;
 	left:50%;
 	transform: translate(-50%, -46%);
 	padding-top: 10px;

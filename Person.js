@@ -6,16 +6,28 @@ function attemptLogin() {
     const Text = document.getElementById('Text');
     const textcheck = document.getElementById('check');
 
+    let new1 = "ChekcBox"
+    let message = "Are You Agree For This Form If Yo Are Agree So Select Check Box"
+
+
     if (usernameVal === "Hadi Zaidi" && MobileVal === "8534007321"){
       if(textcheck.checked){
         window.location.href = "http://127.0.0.1:5501/System-Desine/Book.html";   
        }else{
-           textColor.style.color = "red";
-           textColor.innerHTML = "Your Are Agree For This Form";
-          setTimeout(function() {
-           textColor.innerHTML = "I'm Agree For This Form";
-           textColor.style.color = "white";
-        },2000);   
+            let textitem = document.getElementById("textItemSet")
+            textitem.innerHTML = `
+            <div class="alert alert-${new1} alert-dismissible fade show" role="alert">
+            <strong>Message: </strong>${message}
+            <span type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></span>
+          </div>
+            `;
+            textitem.style.color = "yellow";
+            textitem.style.backgroundColor = "rgba(255, 123, 0, 0.571)";
+            textitem.style.fontWeight = "bold";
+            setTimeout(function() {
+            textitem.innerHTML = ""
+            textitem.style.backgroundColor = ""
+         },4000);
        }
     } else if(usernameVal !== "Hadi Zaidi"){
         document.getElementById("username").style.borderColor = "red";

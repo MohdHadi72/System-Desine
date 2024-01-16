@@ -20,6 +20,10 @@
             <i class="fa-solid fa-rotate-right" id="relode"></i>
         </div>
     </nav>
+
+    <div id="textItemSet" style="padding: 18px 18px; ">
+
+    </div>
    
    <div id="login-container">
         <h2>Person <span style="color: aqua;" id="span"> Details Form</span></h2>
@@ -28,13 +32,14 @@
         <span id="text"></span>
        <br>
        <br>
-        <label for="password">Mobile</label>
-        <input type="number" placeholder="Enter your password" id="Mobile">
+        <label for="mobile">Mobile</label>
+        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" required>
+
         <sapn id="Text"></sapn>
         <br>
     <div class="text">
         <input type="checkbox" id="check"> 
-        <span style="color: white;" id="textColor">I'm Agree For This form</span>
+        <span style="color: white;">I'm Agree For This form</span>
     </div>
        <button onclick="attemptLogin()">You Are Person</button>
        <button onclick="ChangePage()">Info Check</button>
