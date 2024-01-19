@@ -1,4 +1,4 @@
-let maindiv = document.getElementById("main");
+
 let booksArray = [];
 
 function Book(book, Author, Price, Isbn, type) {
@@ -7,7 +7,7 @@ function Book(book, Author, Price, Isbn, type) {
     this.Price = Price;
     this.Isbn = Isbn;
     this.type = type;
-    this.isRented = false; // Added property to track rental status
+    this.isRented = false;
 }
 
 function Display() {}
@@ -31,9 +31,6 @@ Display.prototype.add = function (book) {
     `;
 
     tableBody.innerHTML += tableRow;
-
-   
-
 };
 
 Display.prototype.clear = function () {
@@ -66,7 +63,7 @@ function info() {
     const AuthorVal = document.getElementById("AuthorName").value;
     const PriceVal = document.getElementById("PriceVal").value;
     const IsbnVal = document.getElementById("ISBNCode").value;
-   
+
     let type;
 
     let ProgramingText = document.getElementById("Programing");
@@ -109,29 +106,33 @@ function deleteBook(isbn) {
     displayBooks();
 }
 
-// let mesgText = document.getElementById("textMesg");
-// let mesgTextMonths = document.getElementById("RentMonths");
 
+// rent book for users 
+
+
+// rent book for users 
 function rentBook(isbn) {
-    let months = prompt("enter Nonts")
-    months = parseInt(months);
+let months = prompt("Enter Months");
+months = parseInt(months);
 
-    if (!months || months <= 0) {
-        alert("Please enter a valid number of months.");
-        return;
-    }
-
-    let rentedBook = booksArray.find((book) => book.Isbn === isbn);
-    if (rentedBook) {
-        rentedBook.isRented = true;
-        rentedBook.rentMonths = months;
-        saveStorage(booksArray);
-        displayBooks();
-        Messag.innerHTML = `Book ${rentedBook.book} has been rented for ${months} months.`;
-    }
+if (!months || months <= 0) {
+alert("Please enter a valid number of months.");
+return;
 }
 
+let rentedBook = booksArray.find((book) => book.Isbn === isbn);
 
+if (rentedBook) {
+if (rentedBook.isRented) {
+    alert("This book is already rented.");
+} else {
+    rentedBook.isRented = true;
+    rentedBook.rentMonths = months;
+    saveStorage(booksArray);
+    displayBooks();
+}
+}
+}
 
 
 function displayBooks() {
@@ -143,66 +144,75 @@ function displayBooks() {
         ValueForDisplay.add(book);
     });
 
-    let rentedBooksDiv = document.getElementById("main");
-    rentedBooksDiv.innerHTML = ""; 
+    let rentedBooksDiv = document.getElementById("rentedBooksDisplay");
+    rentedBooksDiv.innerHTML = "";
 
-    booksArray.forEach(function (book) {
+    // let price = Price*rentMonths;
+    booksArray.forEach(function (book, i) {
         if (book.isRented) {
-            rentedBooksDiv.innerHTML += `<div class="items">
-            <div id="Messag"></div>         
+
+            let totalAmount = book.Price*30/100 * book.rentMonths;
+
+            rentedBooksDiv.innerHTML += `<div class="itmes">   
+            <span onclick="remove(${i})">&times;</span>   
                 <h4>Book Name</h4>
                 <div>${book.book}</div>
                 <h4>Months</h4>
                 <div>${book.rentMonths}</div>
-              </div>`;
-        } 
-       
+                <h4>Total Amounts</h4>
+                <div>${totalAmount}</div>
+               
+            </div>`;
+        };
     });
-   
-}
 
-let Reload = document.getElementById("reload");
-Reload.addEventListener("click", function () {
-    window.location.reload();
-});
 
-function LocalStorage() {
-    let library = localStorage.getItem("library");
-    return library ? JSON.parse(library) : [];
+}            
+
+
+function remove(index) {
+booksArray[index].isRented = false;
+booksArray[index].rentMonths = 0;
+saveStorage(booksArray);
+displayBooks();
+
 }
 
 function saveStorage(library) {
-    localStorage.setItem("library", JSON.stringify(library));
+localStorage.setItem("library", JSON.stringify(library));
 }
-
+function LocalStorage() {
+let library = localStorage.getItem("library");
+return library ? JSON.parse(library) : [];
+}
 window.addEventListener("load", function () {
-    booksArray = LocalStorage();
-    displayBooks();
+booksArray = LocalStorage();
+displayBooks();
 });
 
-let ByIconColorChange = document.getElementById("colorChangeBy");
-let bodyColor = document.getElementById("whiteColorForBody");
-let colorLength = ["white", "wheat"];
 
-ByIconColorChange.addEventListener("click", () => {
-    let randoumColor = colorLength[Math.floor(Math.random() * colorLength.length)];
-    bodyColor.style.backgroundColor = randoumColor;
-    bodyColor.style.color = "black";
-    spanColor.style.color = "red";
+let colorChange = document.getElementById("colorChangeByIcon");
+
+let navBar = document.getElementById("bodyFonst");
+let nav = document.querySelector("nav");
+let fonstBody = document.getElementById("fonst");
+
+
+let colors = ["red","yellow","aqua","orange",];
+let fontfalmily = ["Courier New","Gill Sans MT","Trebuchet MS","Times New Roman","cursive","monospace","Helvetica"];
+
+colorChange.addEventListener("click",()=>{
+    let RandomColor = colors[Math.floor(Math.random() * colors.length)];
+    main.style.backgroundColor = RandomColor;
+    main.style.color = "black";
 });
 
-let fonst = document.getElementById("fonst");
-let fonstHeader = document.getElementById("header");
-let fonstH1 = document.getElementById("H1Teg");
-let fonstTagTxt = document.getElementById("tegTxt");
+fonstBody.addEventListener("click",()=>{
+    let RandomColor = fontfalmily[Math.floor(Math.random() * fontfalmily.length)];
+    navBar.style.fontFamily = RandomColor;
+    main.style.fontSize = "20px";
+    nav.style.fontFamily = RandomColor;
+   
+   
+})
 
-let fosntFamily = ["Courier New", "Times New Roman", "sans-serif", "cursive"];
-
-fonst.addEventListener("click", () => {
-    let RandoumFamily = fosntFamily[Math.floor(Math.random() * fosntFamily.length)];
-    bodyColor.style.fontFamily = RandoumFamily;
-    fonstHeader.style.fontFamily = RandoumFamily;
-    fonstH1.style.fontFamily = RandoumFamily;
-    fonstTagTxt.style.fontFamily = RandoumFamily;
-    bodyColor.style.fontSize = "20px";
-});
