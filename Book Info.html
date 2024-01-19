@@ -10,25 +10,31 @@
     <title>World Library Information</title>
     <link rel="stylesheet" href="./Book Info.css">
   </head>
-  <body>
+  <body id="whiteColorForBody">
     <header>
-      <nav>
-        <div class="logo">
+      <nav id="header">
+        <div class="logo" >
           <h2><a href="http://127.0.0.1:5501/System-Desine/Home.html"><i class="fa-solid fa-arrow-left"></i></a><strong>World <span style="color: aqua;"> Library</span></strong></h2></a>
         </div>
         <div class="new">
           <a href="#" style="color: aqua;">Home</a>
-          <a href="#">Info</a>
+          <a href="#">Info</a> 
           <a href="#">About</a>
           <a href="#">Content</a>
           <i class="fa-solid fa-rotate-right" id="reload"></i>
+          <i class="fa-solid fa-droplet" style=" cursor: pointer;" id="colorChangeBy"></i>
+          <i class="fa-solid fa-font" style=" cursor: pointer;" id="fonst"></i>
         </div>
       </nav>
 
-      <div id="Message"></div>
+      <div id="Message">
+
+      </div>
       
-      <div class="container my-5" >
-        <h1>World Library <span style="color: aqua;"> Create Book</span></h1>
+
+      
+      <div class="container my-5">
+        <h1 id="H1Teg">World Library <span style="color: aqua;font-size: 3rem;" id="spanColor"> Create Book</span></h1>
      
         <hr>
         <form id="libraryForm">
@@ -53,7 +59,7 @@
           <div class="row mb-3">
             <label for="ISBNCode" class="col-sm-2 col-form-label"><b>Isbn</b></label>
             <div class="col-sm-10">
-              <input type="text" class="ISBNCode" id="ISBNCode" oninput="validateText(this)">
+              <input type="text" class="ISBNCode" id="ISBNCode">
             </div>
           </div>
           <fieldset class="row mb-3">
@@ -79,12 +85,13 @@
               </div>
             </div>
           </fieldset>
-          <button type="button" class="btn btn-primary" onclick="info()">Add Button</button>
+          <button type="butto" class="btn btn-primary" onclick="info()">Add Button</button>
         </form>
         
-        <div class="table  mt-5">
-          <h1 class="" style="text-align: center;">Your Books &nbsp;&nbsp;<a href="http://127.0.0.1:5501/System-Desine/Delete%20Book.html"><i class="fa-solid fa-trash" style="font-size: 30px; float: right; margin-top: 2%; text-decoration: none;"></i></a></h1>
+        <div class="table  mt-5 "  >
+          <h1 id="tegTxt" style="text-align: center;">Your Books</h1>
           <hr>
+          <div class="contianerfile"></div>
           <table class="table" id="html">
             <thead>
               <tr>
@@ -94,6 +101,7 @@
                 <th scope="col">ISBN</th>
                 <th scope="col">type</th>
                 <th scope="col">Delete Books</th>
+                <th scope="col">Book For Rent</th>
               </tr>
             </thead>
             <tbody id="tableBody">
@@ -107,8 +115,19 @@
             </tbody>
           </table>
         </div>
-      </div>
+      </div>    
+    </div>
     </header>
+
+<div id="main">
+
+
+</div>
+
+
+
+
+
 
     <script src="./Book Info.js"></script>
 

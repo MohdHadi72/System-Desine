@@ -7,9 +7,9 @@
     <title>Login Page </title>
 <link rel="stylesheet" href="./Book.css">
 </head>
-<body>
+<body id="textColor">
     <nav>
-        <div class="logo">
+        <div class="logo" id="Header">
             <h6><a href="http://127.0.0.1:5501/System-Desine/Person.html"><i class="fa-solid fa-arrow-left"></i></a><strong>World <span style="color: aqua;" id="logo"> Library</span></h2></strong></a>
         </div>
         <div class="new">
@@ -18,14 +18,16 @@
             <a href="#">About</a>
             <a href="#">Content</a>
             <i class="fa-solid fa-rotate-right" id="relode"></i>
+            <i class="fa-solid fa-droplet" style="padding-left: 10%; cursor: pointer;" id="colorChangeByIcon"></i>
+            <i class="fa-solid fa-font" style="padding-left: 10%; cursor: pointer;" id="fonst"></i>
         </div>
     </nav>
-    
-    <div id="textItemSet" style="padding: 18px 18px; ">
+
+    <div id="textItemSet" style="padding: 18px 18px;">
 
     </div>
    
-   <div id="login-container" >
+   <div id="login-container">
         <h1>Login<span style="color: aqua;" id="TextOne">Form</span></h1>
         <label for="username">Username</label>
         <input type="text" placeholder="Enter your username" id="username" required>

@@ -8,16 +8,18 @@
 <link rel="stylesheet" href="./Person.css">
 </head>
 <body>
-    <nav>
+    <nav id="Header">
         <div class="logo">  
             <h6><a href="https://www.google.com/"><i class="fa-solid fa-arrow-left"></i></a><strong>World <span style="color: aqua;" id="logo"> Library</span></h2></strong></a>
         </div>
         <div class="new">
-            <a href="#" style="color: aqua;">Home</a>
+            <a href="#" style="color: aqua;" >Home</a>
             <a href="#">Info</a>
             <a href="#">About</a>
             <a href="#">Content</a>
-            <i class="fa-solid fa-rotate-right" id="relode"></i>
+            <i class="fa-solid fa-rotate-right" id="relode" style="padding-left: 2%;"></i>
+            <i class="fa-solid fa-droplet" style="padding-left: 10%; cursor: pointer;" id="colorChangeByIcon"></i>
+            <i class="fa-solid fa-font" style="padding-left: 10%; cursor: pointer;" id="fonst"></i>
         </div>
     </nav>
 
@@ -26,7 +28,7 @@
 </div>
    
    <div id="login-container">
-        <h2>Person <span style="color: aqua;" id="span"> Details Form</span></h2>
+        <h2 id="formText">Person <span style="color: aqua;" id="span"> Details Form</span></h2>
         <label for="username">Username</label>
         <input type="text" placeholder="Enter your username" id="username"  oninput="validateText(this)">
         <span id="text"></span>
@@ -41,7 +43,7 @@
         <span style="color: white;">I'm Agree For This form</span>
     </div>
 
-       <button onclick="LoginForm()">Login Form</button>
+       <button onclick="LoginForm()" id="Header">Login Form</button>
     
     </div>
 

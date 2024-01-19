@@ -61,6 +61,10 @@ a:hover{
     color: aqua;
 }
 
+i:hover{
+    color: aqua;
+}
+
 .container{
    padding-left: 6%;
 }
@@ -97,4 +101,151 @@ table{
     color: black;
     border: none;
     font-weight: bold;
+
+    font-family:cursive;
  }
+
+ i{
+    gap: 19px;
+ }
+
+
+ #login-container {
+    width: 60%; 
+    background-color: rgba(0, 0, 0, 0.801);
+	position: absolute;
+	top: 140%;
+	left:50%;
+	transform: translate(-50%, -46%);
+	padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow: 0px 0px 12px aqua;
+ animation:zooninout 2s infinite alternate ;   
+}
+@keyframes zooninout  {
+    0%{
+    box-shadow: 0px 0px 10px aqua;
+    }
+    50%{
+       box-shadow: 0px 0px 5px aqua,
+       0px 0px 17px rgb(52, 241, 241),
+       0px 0px 20px rgb(98, 255, 255);
+    }
+}
+#TextOne{
+    padding-top: -9%;
+    font-size: 4rem;
+    text-align: center;
+    color: white;
+
+}
+h1{
+    padding-top: -9%;
+    font-size: 4rem;
+    text-align: center;
+    color: white;
+
+}
+
+input[type="tex"] {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
+}
+input::placeholder{
+    font-weight: bold;
+
+}
+
+input[type="numbe"] {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
+}
+#login-container button{
+    width: 90%;
+    background-color: rgb(45, 247, 247);
+    color: rgb(0, 0, 0);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-left: 5%;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 4%;
+   
+}
+
+label{
+    font-size: 21px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+
+}
+
+span{
+    padding-right: 10%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1%;
+    font-size: 20px;
+}
+#main{
+    width: 1320px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 2%;
+    
+}
+.items{
+    flex-basis: 23%;
+    margin: 1%;
+    
+    padding: 19px;
+    position: relative;
+    border-radius: 13px;
+    box-shadow: 0px 0px 10px 2px #cccc;
+}
+.items h4{
+    margin-top: 12px;
+}
+.items span{
+    position: absolute;
+    font-size: 30px;
+    right: 9px;
+    top: 0px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 2px #cccc;
+    border-radius: 50%;
+    padding: 8px 10px;      
+    height: 40px;
+    margin-top: 2%;
+
+
+}
+.items span:hover{
+    background-color: red;
+    
+}

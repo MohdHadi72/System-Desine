@@ -72,3 +72,35 @@ function validateText(input){
   let cleanValue = inputValue.replace(/[^A-Za -z]/g, '');
   input.value = cleanValue;
 };
+
+ 
+let colorChangeOfWebPAge = document.getElementById("colorChangeByIcon");
+let FormColor = document.getElementById("login-container");
+// let bodyColor = document.getElementById("textColor");
+
+let colorsStoke = ["Red","orange","purple","green"]
+
+colorChangeOfWebPAge.addEventListener("click", ()=>{
+  let RandoumColor = colorsStoke[Math.floor(Math.random()* colorsStoke.length)];
+  FormColor.style.background = RandoumColor;
+  FormColor.style.border = `4px solid ${RandoumColor}`;
+  // bodyColor.style.backgroundColor  = "lightBlack";
+
+
+});
+
+let fonst = document.getElementById("fonst");
+let textfonst = document.getElementById("formText");
+let headerFonst = document.getElementById("Header");
+let Fonst = document.getElementById("login-container");
+
+let fosntFamily = ["Courier New","Times New Roman","sans-serif","cursive"];
+
+fonst.addEventListener("click", () => {
+  let RandoumFamily = fosntFamily[Math.floor(Math.random()* fosntFamily.length)];
+  textfonst.style.fontFamily = RandoumFamily;
+  headerFonst.style.fontFamily = RandoumFamily;
+  FonstFamilt.style.fontFamily = RandoumFamily;
+  Fonst.style.fontFamily = RandoumFamily;
+
+});
