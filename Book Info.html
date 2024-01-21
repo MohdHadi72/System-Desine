@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>World Library</title>
+    <meta http-equiv="refrahs" content="2">
     <link rel="stylesheet" href="./Book Info.css">
 </head>
 
@@ -25,7 +26,7 @@
       </nav>
       <div id="main">
         <i class="fa-solid fa-droplet" style="padding-left: 10%; cursor: pointer; float: right; font-size: 20px;" id="colorChangeByIcon"></i>
-        <h1 id="header">World Library </h1>
+        <h1 id="header">World Library</h1>
        
         <form id="libraryForm">
             <label for="BookName">Book Name:</label>
@@ -33,12 +34,16 @@
 
             <label for="AuthorName">Author:</label>
             <input type="text" id="AuthorName" placeholder="Enter author name" required>
-
+  
             <label for="PriceVal">Price:</label>
             <input type="number" id="PriceVal" placeholder="Enter price" required>
 
             <label for="ISBNCode">ISBN:</label>
             <input type="text" id="ISBNCode" placeholder="Enter ISBN" required>
+
+            <label for="BookCount">Count Book:</label>
+            <input type="number" id="BookCount" placeholder="which Books" required>
+
             <div id="textItem">
             <label>Type:</label>
             <input type="radio" id="Programing" name="type" value="Programming" required>
@@ -61,9 +66,11 @@
                     <th>Author</th>
                     <th>Price</th>
                     <th>ISBN</th>
+                    <th>Count Book</th>
                     <th>Type</th>
                     <th>Delete Book</th>
                     <th>Book For Rent</th>
+                    <th>Book Edite</th>
                 </tr>
             </thead>
             <tbody id="tableBody">

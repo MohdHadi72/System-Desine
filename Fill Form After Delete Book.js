@@ -14,7 +14,7 @@ function attemptLogin() {
 
     if (username === "Hadi Zaidi" && password === "Hadi@123"){
         if(TextCheck.checked){
-            window.location.href = "http://127.0.0.1:5501/System-Desine/Delete%20Book.html";   
+            window.location.href = "http://127.0.0.1:5501/System-Desine/Book%20Info.html";   
            }else{
             let textitem = document.getElementById("textItemSet");
             textitem.innerHTML = `

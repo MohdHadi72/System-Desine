@@ -1,11 +1,12 @@
 
 let booksArray = [];
 
-function Book(book, Author, Price, Isbn, type) {
+function Book(book, Author, Price, Isbn,BookCount,type) {
     this.book = book;
     this.Author = Author;
     this.Price = Price;
     this.Isbn = Isbn;
+    this.BookCount = BookCount;
     this.type = type;
     this.isRented = false;
 }
@@ -20,17 +21,22 @@ Display.prototype.add = function (book) {
             <td>${book.Author}</td>
             <td>${book.Price}</td>
             <td>${book.Isbn}</td>
-            <td>${book.type}</td>
+            <td>${book.BookCount}</td>         
+            <td>${book.type}</td>    
             <td>
                 <button class="btn btn-danger" id="remove" onclick="deleteBook('${book.Isbn}')">Delete</button>
             </td>
             <td>      
                 <button class="btn btn-success" id="rent" onclick="rentBook('${book.Isbn}')">Rent</button>
             </td>
+            <td>      
+            <button class="btn btn-success" id="EditBook" onclick="rentBook('${n}')">Edite</button>
+        </td>
         </tr>
     `;
 
     tableBody.innerHTML += tableRow;
+
 };
 
 Display.prototype.clear = function () {
@@ -63,6 +69,7 @@ function info() {
     const AuthorVal = document.getElementById("AuthorName").value;
     const PriceVal = document.getElementById("PriceVal").value;
     const IsbnVal = document.getElementById("ISBNCode").value;
+    const BookCout = document.getElementById("BookCount").value;
 
     let type;
 
@@ -72,13 +79,15 @@ function info() {
 
     if (ProgramingText.checked) {
         type = ProgramingText.value;
-    } else if (english.checked) {
+    }
+     else if (english.checked) {
         type = english.value;
-    } else if (science.checked) {
+    }
+     else if (science.checked) {
         type = science.value;
     }
 
-    const BookNameVal = new Book(BookVal, AuthorVal, PriceVal, IsbnVal, type);
+    const BookNameVal = new Book(BookVal, AuthorVal, PriceVal,IsbnVal,BookCout, type);
 
     let displayValcheck = new Display();
 
@@ -111,30 +120,31 @@ function deleteBook(isbn) {
 
 
 // rent book for users 
+
 function rentBook(isbn) {
-let months = prompt("Enter Months");
-months = parseInt(months);
+    let rentedBook = booksArray.find((book) => book.Isbn === isbn);
+    if (rentedBook) {
+        if (rentedBook.BookCount <= 0) {
+            return   alert("Sorry, this book is not available for rent. It's out of stock");
+        } else if (rentedBook.isRented) {
+          return  alert("This book is already rented.");
+        } else {
+            let months = prompt("Enter Months");
+            months = parseInt(months);
 
-if (!months || months <= 0) {
-alert("Please enter a valid number of months.");
-return;
+            if (!months || months <= 0) {
+               return  alert("Please enter a valid number of months.");
+            }
+            rentedBook.isRented = true;
+            rentedBook.rentMonths = months;
+            rentedBook.BookCount -= 1;
+            saveStorage(booksArray);
+          return  displayBooks();
+           
+
+        }
+    }
 }
-
-let rentedBook = booksArray.find((book) => book.Isbn === isbn);
-
-if (rentedBook) {
-if (rentedBook.isRented) {
-    alert("This book is already rented.");
-} else {
-    rentedBook.isRented = true;
-    rentedBook.rentMonths = months;
-    saveStorage(booksArray);
-    displayBooks();
-}
-}
-}
-
-
 function displayBooks() {
     let ValueForDisplay = new Display();
     let tableBody = document.getElementById("tableBody");
@@ -147,30 +157,32 @@ function displayBooks() {
     let rentedBooksDiv = document.getElementById("rentedBooksDisplay");
     rentedBooksDiv.innerHTML = "";
 
-    // let price = Price*rentMonths;
-    booksArray.forEach(function (book, i) {
+
+    booksArray.forEach(function (book, i){
         if (book.isRented) {
 
-            let totalAmount = book.Price*30/100 * book.rentMonths;
+            let totalAmount = book.Price*book.rentMonths; 
 
-            rentedBooksDiv.innerHTML += `<div class="itmes">   
-            <span onclick="remove(${i})">&times;</span>   
+            rentedBooksDiv.innerHTML += `<div class="itmes">      
                 <h4>Book Name</h4>
                 <div>${book.book}</div>
                 <h4>Months</h4>
                 <div>${book.rentMonths}</div>
                 <h4>Total Amounts</h4>
-                <div>${totalAmount}</div>
+                <div>${totalAmount}</div>           
+                <button class="btn btn-success" id="return" onclick="remove('${i}')">Return</button>
                
             </div>`;
+
         };
+        
     });
 
 
 }            
 
-
 function remove(index) {
+booksArray[index].BookCount +=1;    
 booksArray[index].isRented = false;
 booksArray[index].rentMonths = 0;
 saveStorage(booksArray);

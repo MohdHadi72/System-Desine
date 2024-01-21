@@ -6,7 +6,7 @@ body {
 }
 
 #main {
-    max-width: 800px;
+    max-width: 900px;
     margin:  auto;
     background-color: #fff;
     padding: 20px;
@@ -54,6 +54,7 @@ table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
+    text-align: center;
 }
 
 table th {
@@ -103,12 +104,20 @@ font-size: 20px;
 cursor: pointer;
 margin-top: 4%;
 
+text-shadow: 5px 5px 50px 50px rgba(252, 5,5, 0.6999);
+animation: animation 5s linear infinite;
+}
+
+@keyframes animation{
+100%{
+    filter: hue-rotate(360deg);
+}
 }
 #tableBody button {
 width: 90%;
 background-color: rgb(45, 247, 247);
 color: rgb(0, 0, 0);
-padding: 14px 20px;
+padding: 9px 9px;
 margin: 8px 0;
 border: none;
 border-radius: 4px;
@@ -117,6 +126,14 @@ margin-left: 5%;
 font-size: 20px;
 cursor: pointer;
 margin-top: 4%;
+text-shadow: 5px 5px 50px 50px rgba(252, 5,5, 0.6999);
+animation: animation 5s linear infinite;
+}
+
+@keyframes animation{
+100%{
+    filter: hue-rotate(360deg);
+}
 }
 .itmes{
   
@@ -134,7 +151,6 @@ margin-top: 4%;
 
 nav {
 width: 100%;
-/* font-family:Arial, Helvetica, sans-serif; */
 height: 80px;
 background: rgb(39, 38, 38);
 color: white;
@@ -144,16 +160,20 @@ align-items: center;
 text-transform: uppercase;
 font-family: "Roboto", sans-serif;
 margin-bottom: 4%;
+}
 
-}
-h1{
-font-family: "Oranienbaum", serif;
-/* padding-left: 5%; */
-}
-.logo h2{
+.logo h5{
 padding-left: 4%;
-/* font-size: ; */
+text-shadow: 5px 5px 50px 50px rgba(252, 5,5, 0.6999);
+animation: animation 5s linear infinite;
 }
+
+@keyframes animation{
+100%{
+    filter: hue-rotate(360deg);
+}
+}
+
 .logo {
 width: 25%;
 color: rgb(255, 255, 255);
@@ -182,9 +202,18 @@ text-decoration: none;
 color: white;
 text-align: center;
 font-weight: bold;
-
-
+text-shadow: 5px 5px 50px 50px rgba(252, 5,5, 0.6999);
+animation: animation 5s linear infinite;
 }
+
+@keyframes animation{
+100%{
+    filter: hue-rotate(360deg);
+}
+}
+
+
+
 
 a:hover{
 color: aqua;
@@ -199,4 +228,25 @@ cursor: pointer;
 
 
 }
+
+#return{
+    width: 100%;
+    padding: 10px;
+    float: right;
+    border: none;
+    border-radius: 8px;
+    background-color: aqua;
+    font-weight: bold;
+    margin-top: 4%;
+    font-size: 17px;
+    text-shadow: 5px 5px 50px 50px rgba(252, 5,5, 0.6999);
+    animation: animation 5s linear infinite;
+    }
+    
+    @keyframes animation{
+    100%{
+        filter: hue-rotate(360deg);
+    }
+    }
+
 
